@@ -10,7 +10,7 @@ import netifaces
 import requests
 import argparse
 import platform
-import pyshark
+import tshark
 import socket
 import sys
 import os
@@ -143,7 +143,7 @@ def extract_stun_xor_mapped_address(interface):
     print("[+] Capturing traffic, please wait...")
     if platform.system() == "Windows":
         interface = "\\Device\\NPF_"+interface
-    cap = pyshark.LiveCapture(interface=interface, display_filter="stun")
+    cap = tshark.LiveCapture(interface=interface, display_filter="stun")
     my_ip = get_my_ip()
     resolved = {}
     whois = {}
